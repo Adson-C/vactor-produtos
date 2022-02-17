@@ -1,6 +1,7 @@
 package br.com.ads.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,10 +33,18 @@ public class ServletFom extends HttpServlet {
 		 String descricao = request.getParameter("descricao");
 		 String valor = request.getParameter("valor");
 		 
+		 PrintWriter writer = response.getWriter();
+			writer.println("Id: " + id);
+			writer.println("Descrição: " + descricao);
+			writer.println("Valor: " + valor);
+			writer.flush();
+		 
 		 ProdutoModel produtoModel = new ProdutoModel();
 		 produtoModel.setId(Long.parseLong(id));
 		 produtoModel.setDescricao(descricao);
 		 produtoModel.setValor(Double.valueOf(valor));
+		 
+		 
 		 
 		 try {
 			daoProdutorepository.gravar(produtoModel);
