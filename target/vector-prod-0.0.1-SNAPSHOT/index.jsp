@@ -65,7 +65,7 @@ label {
 
 	<form action="<%=request.getContextPath()%>/ServletFom" method="post" class="row g-3 needs-validation" novalidate id="formUser">
 
-
+	<input type="hidden" value="<%=request.getParameter("url")%>" name="url"> 
 
 		<div class="col-sm-4">
 			<label class="col-sm-4 col-form-label">Código:</label> <input
@@ -83,7 +83,7 @@ label {
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Valor:</label> <input class="form-control"
-				type="text" name="valor" id="valor" required="required"
+				type="number" name="valor" id="valor" required="required"
 				value="${produtomodel.valor}">
 				
 			<div class="invalid-feedback">Obrigatório</div>
@@ -106,6 +106,11 @@ label {
 	
 	         
 	<script type="text/javascript">
+	
+	document.getElementById("valor").addEventListener("change", function(){
+		   this.value = parseFloat(this.value);
+		});
+	
 
 	function limparForm() {
 	    
