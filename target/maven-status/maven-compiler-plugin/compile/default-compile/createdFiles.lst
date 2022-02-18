@@ -1,0 +1,5 @@
+br\com\ads\connection\ConnectioConfig.class
+br\com\ads\connection\SingleConnectionBanco.class
+br\com\ads\model\ProdutoModel.class
+br\com\ads\servlet\ServletFom.class
+br\com\ads\dao\DAOProdutorepository.class
