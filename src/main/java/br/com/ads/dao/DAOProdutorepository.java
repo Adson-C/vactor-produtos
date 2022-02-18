@@ -15,7 +15,8 @@ public class DAOProdutorepository {
 		connection = SingleConnectionBanco.getConnection();
 	}
 
-	public ProdutoModel gravar(ProdutoModel obj) throws Exception {
+	
+	public void gravar(ProdutoModel obj) throws Exception {
 
 		String sql = "INSERT INTO produto_model(id, descricao, valor) VALUES (?,?,?);";
 
@@ -28,7 +29,6 @@ public class DAOProdutorepository {
 		pdSql.execute();
 
 		connection.commit();
-		return obj;
 
 	}
 

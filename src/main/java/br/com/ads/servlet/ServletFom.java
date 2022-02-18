@@ -29,6 +29,8 @@ public class ServletFom extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		try {
+		
 		 String id =  request.getParameter("id");
 		 String descricao = request.getParameter("descricao");
 		 String valor = request.getParameter("valor");
@@ -40,18 +42,19 @@ public class ServletFom extends HttpServlet {
 			writer.flush();
 		 
 		 ProdutoModel produtoModel = new ProdutoModel();
-		 produtoModel.setId(Long.parseLong(id));
+		 produtoModel.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : null);
 		 produtoModel.setDescricao(descricao);
 		 produtoModel.setValor(Double.valueOf(valor));
+
+		 daoProdutorepository.gravar(produtoModel);
 		 
-		 
-		 
-		 try {
-			daoProdutorepository.gravar(produtoModel);
+		 request.setAttribute("produtomodel", produtoModel);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 	}
+	
 
 }
